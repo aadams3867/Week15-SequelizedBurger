@@ -8,7 +8,6 @@ var express = require('express');
 var router = express.Router();
 
 var orm = require('../models')["Burger"];
-//var burger = require('../models/burger.js');
 
 
 // Routes
@@ -26,34 +25,22 @@ router.get('/burgers', function (req, res) {
 	});
 });
 
-
-
-
-
-
-
-/*router.get('/burgers', function (req, res) {
-	burger.all(function (data) {
-		var hbsObject = { burgers: data };
-		console.log(hbsObject);
-		res.render('index', hbsObject);
-	});
-});
-
 router.post('/burgers/create', function (req, res) {
-	burger.create(['burger_name'], [req.body.name], function () {
+	var tastyBurger = req.body.name;
+
+	orm.create({burger_name: tastyBurger}).then(function(){
+		console.log("Added " + tastyBurger + "!");
 		res.redirect('/burgers');
 	});
 });
 
 router.put('/burgers/update/:id', function (req, res) {
-	var condition = 'id = ' + req.params.id;
+	var eatenBurger = req.params.id;
 
-	console.log('condition', condition);
-
-	burger.update({ devoured: req.body.devoured }, condition, function () {
+	orm.update({ devoured: 1 }, { where: {id: eatenBurger} }).then(function(){
+		console.log("Devoured " + eatenBurger + "!");
 		res.redirect('/burgers');
 	});
-});*/
+});
 
 module.exports = router;

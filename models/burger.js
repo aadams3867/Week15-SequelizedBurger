@@ -6,7 +6,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Burger = sequelize.define('Burger', {
     burger_name: DataTypes.STRING,
-    devoured: {type: DataTypes.INTEGER, defaultValue: 0},
+    devoured: {type: DataTypes.INTEGER, defaultValue: 0}, // Default = false = not devoured
     date: {type: DataTypes.DATE, defaultValue: sequelize.NOW}
   }, {
     classMethods: {
@@ -17,30 +17,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return Burger;
 };
-
-
-
-
-
-
-
-
-
-/*var burger = {
-	all: function (cb) {
-		orm.selectAll('burgers', function (res) {
-			cb(res);
-		});
-	},
-	// cols and vals are arrays
-	create: function (cols, vals, cb) {
-		orm.insertOne('burgers', cols, vals, function (res) {
-			cb(res);
-		});
-	},
-	update: function (objColVals, condition, cb) {
-		orm.updateOne('burgers', objColVals, condition, function (res) {
-			cb(res);
-		});
-	}
-};*/
