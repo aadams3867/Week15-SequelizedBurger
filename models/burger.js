@@ -1,10 +1,32 @@
-/*
-Here is where you setup a model for how to interface with the database.
-*/
+// Burger Model
+// ===============
+'use strict';
 
-var orm = require('../config/orm.js');
+// EXPORT THIS MODULE TO INDEX.JS
+module.exports = function(sequelize, DataTypes) {
+  var Burger = sequelize.define('Burger', {
+    burger_name: DataTypes.STRING,
+    devoured: {type: DataTypes.INTEGER, defaultValue: 0},
+    date: {type: DataTypes.DATE, defaultValue: sequelize.NOW}
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      }
+    }
+  });
+  return Burger;
+};
 
-var burger = {
+
+
+
+
+
+
+
+
+/*var burger = {
 	all: function (cb) {
 		orm.selectAll('burgers', function (res) {
 			cb(res);
@@ -21,11 +43,4 @@ var burger = {
 			cb(res);
 		});
 	}
-/*	delete: function (condition, cb) {
-		orm.delete('burgers', condition, function (res) {
-			cb(res);
-		});
-	}*/
-};
-
-module.exports = burger;
+};*/
