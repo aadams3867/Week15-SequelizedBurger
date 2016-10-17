@@ -32,8 +32,8 @@ app.set('view engine', 'handlebars');
 var routes = require('./controllers/burgers_controller.js');
 app.use('/', routes);
 
-var Burger = require("./models/")["Burger"];
-Burger.sync();
+var burger = require("./models/")["Burger"];
+burger.sync();
 
 
 // Listener
